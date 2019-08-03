@@ -1,0 +1,9 @@
+<div>
+  <button value="submit" (click)="getCards()" >Get Cards</button>
+</div>
+
+<div *ngIf="cards">
+  <ul *ngFor="let card of cards">
+    <span class="badge">{{card.name | uppercase}}</span>
+  </ul>
+</div>

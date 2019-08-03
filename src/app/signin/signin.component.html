@@ -1,0 +1,16 @@
+<form>
+    <div>
+        <label for="username">Username</label>
+        <input [(ngModel)] ="username" type="text" name="username" id="username"/>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input [(ngModel)]="password" type="password" name="password" id="password"/>
+    </div>
+    <div>
+        <button value="submit" (click)="signIn()" >Submit</button>
+    </div>
+    <div>
+        <input [(ngModel)]="tokenService.token"  type="text" name="jwt" id="jwt" readonly>
+    </div>
+</form>
