@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { GetcardsComponent } from './getcards/getcards.component';
 import { AddcardsComponent } from './addcards/addcards.component';
 import {AutocompleteService} from './services/autocomplete.service';
+import  {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {AutocompleteService} from './services/autocomplete.service';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [AutocompleteService],
   bootstrap: [AppComponent]

@@ -1,0 +1,17 @@
+<form autocomplete="off">
+    <label for="addCard"></label>
+    <input [formControl]="queryField"  type="text" name="addCard" id="addCard"/>
+  <div class="pane" *ngIf="results">
+    <table class="table table-striped" *ngFor="let catalog of results.data" align="center">
+      <tr>
+        <td style="max-height: 5px">{{catalog}}</td>
+      </tr>
+
+    </table>
+  </div>
+    <div>
+      <button value="submit" (click)="addCard()" >Submit</button>
+    </div>
+</form>
+
+
