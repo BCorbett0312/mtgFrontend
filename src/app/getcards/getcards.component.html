@@ -5,5 +5,6 @@
 <div *ngIf="cards">
   <ul *ngFor="let card of cards">
     <span class="badge">{{card.name | uppercase}}</span>
+    <img src="https://api.scryfall.com/cards/named?exact={{card.name}}&format=image&version=small">
   </ul>
 </div>

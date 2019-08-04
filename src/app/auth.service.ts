@@ -11,7 +11,7 @@ export class AuthService {
 
 
   signin(username: string, password: string): Observable <string> {
-    return this.http.post<string>('http://localhost:8080/signin', {}, {
+    return this.http.post('http://localhost:8080/signin', {}, {
       params: {username, password},
       responseType: 'text'
     });

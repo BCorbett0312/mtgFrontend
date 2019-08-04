@@ -5,4 +5,8 @@ export class Card {
   name: string;
   scryfallId: string;
   condition: string;
+  imageUrl: string;
+
+
+
   }
