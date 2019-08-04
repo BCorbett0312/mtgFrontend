@@ -11,6 +11,7 @@
         <button value="submit" (click)="signIn()" >Submit</button>
     </div>
     <div>
+      <label for="jwt">JWT Token</label>
         <input [(ngModel)]="tokenService.token"  type="text" name="jwt" id="jwt" readonly>
     </div>
 </form>

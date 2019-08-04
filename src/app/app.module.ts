@@ -1,26 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GetcardsComponent } from './getcards/getcards.component';
+import { AddcardsComponent } from './addcards/addcards.component';
+import {AutocompleteService} from './services/autocomplete.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    GetcardsComponent
+    GetcardsComponent,
+    AddcardsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AutocompleteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

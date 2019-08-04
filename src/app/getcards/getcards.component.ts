@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Card} from '../models/card';
-import {CardService} from '../card.service';
-import {TokenService} from '../token.service';
+import {CardService} from '../services/card.service';
+import {TokenService} from '../services/token.service';
 
 
 @Component({
