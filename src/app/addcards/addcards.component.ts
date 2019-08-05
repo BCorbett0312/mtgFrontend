@@ -36,7 +36,7 @@ export class AddcardsComponent implements OnInit {
         .subscribe(data => this.results = data));
   }
 
-  formatter = (result: string) => result.toUpperCase();
+
 
   search = (text$: Observable<string>) =>
     text$.pipe(
@@ -46,6 +46,10 @@ export class AddcardsComponent implements OnInit {
         : this.results.data.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
 
-
-
+  addCard() {
+    this.card = new Card();
+    console.log((document.getElementById('addcard') as HTMLInputElement).value);
+    this.card.name = (document.getElementById('addcard') as HTMLInputElement).value;
+    return this.cardService.postCard(this.card, this.tokenService.token);
+    }
 }

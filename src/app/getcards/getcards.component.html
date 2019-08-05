@@ -1,10 +1,16 @@
 <div>
-  <button value="submit" (click)="getCards()" >Get Cards</button>
+  <button class="btn btn-outline-secondary" value="submit" (click)="getCards()" >Get Cards</button>
 </div>
 
+
 <div *ngIf="cards">
-  <ul *ngFor="let card of cards">
-    <span class="badge">{{card.name | uppercase}}</span>
-    <img src="https://api.scryfall.com/cards/named?exact={{card.name}}&format=image&version=small">
-  </ul>
+  <div class="row justify-content-around">
+    <div *ngFor="let card of cards">
+      <div class="col-md-4 col-lg-3">
+        <span class="badge">{{card.name | titlecase}}</span>
+        <img src="https://api.scryfall.com/cards/named?exact={{card.name}}&format=image&version=small">
+      </div>
+    </div>
+  </div>
 </div>
+
