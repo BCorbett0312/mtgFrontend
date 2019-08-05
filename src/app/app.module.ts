@@ -8,8 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { GetcardsComponent } from './getcards/getcards.component';
 import { AddcardsComponent } from './addcards/addcards.component';
-import {AutocompleteService} from './services/autocomplete.service';
-import  {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AutocompleteService} from './services/autocomplete.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import  {NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     NgbModule
   ],
-  providers: [AutocompleteService],
+  providers: [AutocompleteService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

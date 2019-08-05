@@ -5,6 +5,9 @@ import { FormControl } from '@angular/forms';
 import {Card} from '../models/card';
 import {AutocompleteService} from '../services/autocomplete.service';
 import {Catalog} from '../models/catalog';
+import {debounceTime, map} from 'rxjs/operators';
+import {distinctUntilChanged} from 'rxjs/internal/operators/distinctUntilChanged';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -32,6 +35,16 @@ export class AddcardsComponent implements OnInit {
       .subscribe(queryField => this.autocompleteService.search(queryField)
         .subscribe(data => this.results = data));
   }
+
+  formatter = (result: string) => result.toUpperCase();
+
+  search = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      map(term => term.length < 2 ? []
+        : this.results.data.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
+    )
 
 
 
