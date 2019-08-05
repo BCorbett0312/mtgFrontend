@@ -2,9 +2,10 @@
   "name": "mtgfrontend",
   "version": "0.0.0",
   "scripts": {
-    "postbuild": "ng build --prod",
+    "postinstall": "ng build --aot --prod",
+    "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,7 +13,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-devkit/build-angular": "~0.801.1",
     "@angular/animations": "~8.1.1",
     "@angular/cli": "~8.1.1",
     "@angular/common": "~8.1.1",
