@@ -1,11 +1,13 @@
-<label for="typeahead-format">Add Cards</label>
-  <div class="input-group input-group-sm col-3">
-    <input id="typeahead-format" type="text" class="form-control"
+<label for="addcard">Add Cards</label>
+<div class="input-group col-3">
+  <input id="addcard" type="text" class="form-control"
          [formControl]="queryField"
-         [(ngModel)]="card"
          [ngbTypeahead]="search"/>
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button">Add Card</button>
-    </div>
-  </div>
+</div>
+<div>
+  <button class="btn btn-outline-secondary" type="button" (click)="addCard()">Add Card</button>
+</div>
+
+
+
 
