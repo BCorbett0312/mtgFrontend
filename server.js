@@ -6,7 +6,7 @@ const app = express();
 
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname, "/dist/mtgfrontend"));
+app.use(express.static(__dirname + "/dist/mtgfrontend"));
 
 app.get("/*", function(req, res) {
 
