@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/mtgaccumulatedknowledge'));
+app.use(express.static('/dist/mtgFrontend'));
 
 app.get('/*', function(req,res) {
 
-  res.sendFile(path.join(__dirname+'/dist/mtgaccumulatedknowledge/index.html'));
+  res.sendFile(path.join('/dist/mtgFrontend/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
