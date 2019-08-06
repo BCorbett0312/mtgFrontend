@@ -6,8 +6,10 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 
   token: string;
+  isLoggedIn = false;
 
-  constructor() { }
+  constructor() {
 
+  }
 
 }

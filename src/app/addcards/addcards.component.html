@@ -1,13 +1,14 @@
-<label for="addcard">Add Cards</label>
-<div class="input-group col-3">
-  <input id="addcard" type="text" class="form-control"
+<div *ngIf="tokenService.token">
+  <label for="addcard">Add Cards</label>
+  <div class="input-group col-3">
+    <input id="addcard" type="text" class="form-control"
          [formControl]="queryField"
          [ngbTypeahead]="search"/>
+  </div>
+  <div>
+    <button class="btn btn-outline-secondary" type="button" (click)="addCard()">Add Card</button>
+  </div>
 </div>
-<div>
-  <button class="btn btn-outline-secondary" type="button" (click)="addCard()">Add Card</button>
-</div>
-
 
 
 

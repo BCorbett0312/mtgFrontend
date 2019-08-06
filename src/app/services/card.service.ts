@@ -23,12 +23,6 @@ export class CardService {
     return this.http.get<Card[]>(this.cardUrl, {headers});
   }
 
-  getCardImages(name: string): Observable <string> {
-    const params = new HttpParams().set('exact', name).set('Version', 'normal').set('Format', 'image');
-    console.log(params);
-    return this.http.get<string>('https://api.scryfall.com/cards/named', {params});
-  }
-
   postCard(card: Card, token: string) {
     this.cardToPersist = card;
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);

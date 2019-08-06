@@ -1,4 +1,5 @@
-<div>
+
+<div *ngIf="!tokenService.isLoggedIn">
   <button class="btn btn-outline-secondary" value="submit" (click)="openVerticallyCentered(content)">Sign Up</button>
 </div>
 
