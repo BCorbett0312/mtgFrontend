@@ -3,10 +3,10 @@ const path = require('path');
 
 const app = express();
 
-app.use(express.static('./dist/mtgFrontend'));
+app.use(express.static('/dist/mtgFrontend'));
 
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/dist/mtgFrontend/index.html'));
+  res.sendFile(path.join('/dist/mtgFrontend/index.html'));
 });
 
 app.listen(process.env.PORT || 8080);
