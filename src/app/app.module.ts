@@ -11,6 +11,7 @@ import { AddcardsComponent } from './addcards/addcards.component';
 import { AutocompleteService} from './services/autocomplete.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
     AppComponent,
     SigninComponent,
     GetcardsComponent,
-    AddcardsComponent
+    AddcardsComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
