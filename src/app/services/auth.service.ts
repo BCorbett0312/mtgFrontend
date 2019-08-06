@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {User} from '../models/user';
+import {TokenService} from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +11,11 @@ import {environment} from '../../environments/environment';
 export class AuthService {
 
   public authUrl: string;
+  public newUserUrl: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private tokenService: TokenService) {
     this.authUrl = environment.apiUrl + '/signin';
+    this.newUserUrl = environment.apiUrl + '/signup';
   }
 
 
@@ -21,6 +25,11 @@ export class AuthService {
       responseType: 'text'
     });
   }
+
+  signup(user: User): Observable <string> {
+    return this.http.post(this.newUserUrl, user, {responseType: 'text'});
+  }
+
 
 
 }

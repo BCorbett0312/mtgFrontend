@@ -14,8 +14,6 @@ export class SigninComponent implements OnInit {
   username: string;
   @Input()
   password: string;
-  // @Input()
-  // jwt: string;
 
   authService: AuthService;
   tokenService: TokenService;
