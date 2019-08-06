@@ -1,0 +1,29 @@
+<div>
+  <button class="btn btn-outline-secondary" value="submit" (click)="openVerticallyCentered(content)">Sign Up</button>
+</div>
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header bg-dark">
+    <h4 class="modal-title text-white">Sign Up</h4>
+    <button type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body bg-dark">
+    <div class="input-group mb-3 col-7">
+      <input [(ngModel)] ="user.username" type="text" class="form-control" placeholder="Username">
+    </div>
+    <div class="input-group mb-3 col-7">
+      <input [(ngModel)]="user.password" type="password" class="form-control" placeholder="Password">
+    </div>
+    <div class="input-group mb-3 col-7">
+      <input [(ngModel)]="user.email" type="text" class="form-control" placeholder="Email">
+    </div>
+  </div>
+  <div class="modal-footer bg-dark text-white">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-light" (click)="createNewUser()">Create User</button>
+      </div>
+</ng-template>
