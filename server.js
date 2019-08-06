@@ -9,7 +9,7 @@ app.use(express.static("./dist/mtgaccumulatedknowledge"));
 
 app.get("/*", function(req, res) {
 
-  res.sendFile(path.join("./dist/mtgaccumulatedknowledge/index.html"));
+  res.sendFile(path.join(__dirname, "./dist/mtgaccumulatedknowledge/index.html"));
 });
 
 // Start the app by listening on the default Heroku port
