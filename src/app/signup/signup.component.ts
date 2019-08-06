@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   user: User;
 
-  constructor(public authService: AuthService, public modalService: NgbModal, private tokenService: TokenService) {
+  constructor(public authService: AuthService, public modalService: NgbModal, public tokenService: TokenService) {
     this.user = new User();
   }
 
