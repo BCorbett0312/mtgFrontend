@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
     this.modalService.open(content, { centered: true });
   }
 
+
   createNewUser() {
     this.modalService.dismissAll();
     this.authService.signup(this.user).subscribe(jwt => this.tokenService.token = jwt);
