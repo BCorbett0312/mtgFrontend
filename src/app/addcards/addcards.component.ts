@@ -50,6 +50,6 @@ export class AddcardsComponent implements OnInit {
     this.card = new Card();
     console.log((document.getElementById('addcard') as HTMLInputElement).value);
     this.card.name = (document.getElementById('addcard') as HTMLInputElement).value;
-    return this.cardService.postCard(this.card, this.tokenService.token);
+    return this.cardService.postCard(this.card);
     }
 }

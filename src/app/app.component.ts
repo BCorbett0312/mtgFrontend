@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {User} from './models/user';
+import {LogoutComponent} from './logout/logout.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+
+
   title = 'Accumulated Knowledge';
+
+
 }

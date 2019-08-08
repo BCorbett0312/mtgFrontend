@@ -1,3 +1,3 @@
-export class Catalog{
+export class Catalog {
   data: string[];
 }

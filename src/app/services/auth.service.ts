@@ -13,7 +13,7 @@ export class AuthService {
   public authUrl: string;
   public newUserUrl: string;
   public validateUrl: string;
-  authUser: User;
+  public authUser: User;
 
 
   constructor(private http: HttpClient, private tokenService: TokenService) {
@@ -35,7 +35,14 @@ export class AuthService {
     return this.http.post(this.newUserUrl, user, {responseType: 'text'});
   }
 
+
+
   checkTokenValidity(): Observable<User> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.tokenService.token);
+    return this.http.get<User>(this.validateUrl, {headers});
+  }
+
+  loadGroupsAndUsers(): Observable<User> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.tokenService.token);
     return this.http.get<User>(this.validateUrl, {headers});
   }

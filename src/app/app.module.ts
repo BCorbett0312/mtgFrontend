@@ -6,23 +6,23 @@ import { AppComponent } from './app.component';
 import { SigninComponent } from './signin/signin.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { GetcardsComponent } from './getcards/getcards.component';
 import { AddcardsComponent } from './addcards/addcards.component';
 import { AutocompleteService} from './services/autocomplete.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './signup/signup.component';
 import { LogoutComponent } from './logout/logout.component';
+import { GroupsComponent } from './groups/groups.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SigninComponent,
-    GetcardsComponent,
     AddcardsComponent,
     SignupComponent,
-    LogoutComponent
+    LogoutComponent,
+    GroupsComponent
   ],
   imports: [
     BrowserModule,

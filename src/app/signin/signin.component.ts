@@ -10,9 +10,8 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class SigninComponent implements OnInit {
 
-  @Input()
+
   username: string;
-  @Input()
   password: string;
 
   authService: AuthService;
@@ -34,11 +33,12 @@ export class SigninComponent implements OnInit {
 
   }
 
-  signIn() {
-    this.authService.signin(this.username, this.password).subscribe(jwt => {
+  async signIn() {
+    await this.authService.signin(this.username, this.password).subscribe(jwt => {
       this.tokenService.token = jwt;
       this.tokenService.isLoggedIn = true;
       this.cookieService.set('token', this.tokenService.token, );
+      this.authService.loadGroupsAndUsers().subscribe(data => this.authService.authUser = data);
     });
   }
 }
