@@ -1,0 +1,48 @@
+<ng-template #content let-modal>
+  <div class="modal-header bg-dark">
+    <h4 class="modal-title text-white">Sign Up</h4>
+    <button type="button" class="close text-white" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body bg-dark">
+    <div class="input-group mb-3 col-7">
+      <input [(ngModel)] ="group.name" type="text" class="form-control" placeholder="Name of Group">
+    </div>
+  </div>
+  <div class="modal-footer bg-dark text-white">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-light" (click)="createNewGroup()">Create Group</button>
+  </div>
+</ng-template>
+
+
+<div *ngIf="tokenService.isLoggedIn">
+<ngb-tabset #t="ngbTabset">
+  <ngb-tab id="tab-selectbyid1">
+    <ng-template ngbTabTitle><b>My Cards</b></ng-template>
+    <ng-template ngbTabContent>
+      <div class="d-flex flex-wrap justify-content-around">
+        <div *ngFor="let card of authService.authUser.cards" class="col-md-4 col-lg-2">
+          <span class="badge">{{card.name | titlecase}}</span>
+          <div>
+            <img src="https://api.scryfall.com/cards/named?exact={{card.name}}&format=image&version=small">
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab *ngFor="let group of authService.authUser.groups">
+    <ng-template ngbTabTitle><b>{{group.name | titlecase}}</b></ng-template>
+    <ng-template ngbTabContent>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab id="tab-newGroup" (click)="openVerticallyCentered(content)">
+    <ng-template ngbTabTitle>
+    <div (click)="openVerticallyCentered(content)"><b>New Group+</b></div>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+</div>
+
+

@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import {TokenService} from '../services/token.service';
 import {CookieService} from 'ngx-cookie-service';
+import {map} from 'rxjs/operators';
+import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-signin',
@@ -29,7 +31,10 @@ export class SigninComponent implements OnInit {
       this.tokenService.token = this.cookieService.get('token');
       this.authService.checkTokenValidity().subscribe(data => this.authService.authUser = data);
       this.tokenService.isLoggedIn = true;
-    }
+      if (this.authService.authUser.default) {
+        this.tokenService.isLoggedIn = false;
+      }
+          }
 
   }
 

@@ -9,4 +9,5 @@ export class User {
   email: string;
   groups: FriendGroup[];
   cards: Card[];
+  default = true;
 }
