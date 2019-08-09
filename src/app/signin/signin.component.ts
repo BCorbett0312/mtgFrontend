@@ -26,16 +26,19 @@ export class SigninComponent implements OnInit {
     this.cookieService = cookieService;
    }
 
-  ngOnInit() {
+  async ngOnInit() {
     if (this.cookieService.check('token')) {
       this.tokenService.token = this.cookieService.get('token');
-      this.authService.checkTokenValidity().subscribe(data => this.authService.authUser = data);
-      this.tokenService.isLoggedIn = true;
-      if (this.authService.authUser.default) {
-        this.tokenService.isLoggedIn = false;
-      }
-          }
+      await this.authService.checkTokenValidity().then(data => this.authService.authUser = data);
+      this.updateLoginStatus();
+    }
 
+  }
+
+  updateLoginStatus() {
+    if (this.authService.authUser.username === '') {
+      this.tokenService.isLoggedIn = false;
+    } else { this.tokenService.isLoggedIn = true; }
   }
 
   async signIn() {

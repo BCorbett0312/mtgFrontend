@@ -13,6 +13,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './signup/signup.component';
 import { LogoutComponent } from './logout/logout.component';
 import { GroupsComponent } from './groups/groups.component';
+import { AddusertogroupComponent } from './addusertogroup/addusertogroup.component';
+
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { GroupsComponent } from './groups/groups.component';
     AddcardsComponent,
     SignupComponent,
     LogoutComponent,
-    GroupsComponent
+    GroupsComponent,
+    AddusertogroupComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -35,9 +35,9 @@ export class AuthService {
     return this.http.post(this.newUserUrl, user, {responseType: 'text'});
   }
 
-  checkTokenValidity(): Observable<User> {
+  async checkTokenValidity() {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.tokenService.token);
-    return this.http.get<User>(this.validateUrl, {headers});
+    return await this.http.get<User>(this.validateUrl, {headers}).toPromise();
   }
 
   loadGroupsAndUsers(): Observable<User> {

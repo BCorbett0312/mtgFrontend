@@ -31,13 +31,21 @@ export class GroupsComponent implements OnInit {
   ngOnInit() {
   }
 
-  createNewGroup() {
+  async createNewGroup() {
+    await this.groupService.createNewGroup(this.group).then();
+    await this.groupService.getGroups().subscribe(data => this.authService.authUser.groups = data);
     this.modalService.dismissAll();
-    this.groupService.createNewGroup(this.group).subscribe();
+
   }
 
   openVerticallyCentered(content) {
     this.modalService.open(content, { centered: true });
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
+
+
   }
 
 }

@@ -9,5 +9,9 @@ export class User {
   email: string;
   groups: FriendGroup[];
   cards: Card[];
-  default = true;
+
+  constructor() {
+    this.username = '';
+  }
+
 }
