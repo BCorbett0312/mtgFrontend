@@ -1,0 +1,8 @@
+  <label for="addcard">Add User To Group</label>
+  <div class="input-group col-3">
+    <input id="addcard" type="text" class="form-control" [(ngModel)]="user.username">
+  </div>
+  <p>{{group.name}}</p>
+  <div>
+    <button class="btn btn-outline-secondary" type="button" (click)="addUser()">Submit</button>
+  </div>
