@@ -44,8 +44,11 @@ export class GroupsComponent implements OnInit {
 
   closeModal() {
     this.modalService.dismissAll();
-
-
   }
+
+  getGroupCards(groupId: number) {
+    this.cardService.getGroupCards(groupId).subscribe(data => this.groupService.groupCards = data);
+  }
+
 
 }

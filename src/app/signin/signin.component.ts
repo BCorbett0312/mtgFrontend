@@ -4,6 +4,8 @@ import {TokenService} from '../services/token.service';
 import {CookieService} from 'ngx-cookie-service';
 import {map} from 'rxjs/operators';
 import {throwError} from 'rxjs';
+import {GroupService} from '../services/group.service';
+import {CardService} from '../services/card.service';
 
 @Component({
   selector: 'app-signin',
@@ -19,20 +21,26 @@ export class SigninComponent implements OnInit {
   authService: AuthService;
   tokenService: TokenService;
   cookieService: CookieService;
+  cardService: CardService;
+  groupService: GroupService;
 
-  constructor(authService: AuthService, tokenService: TokenService, cookieService: CookieService) {
+  constructor(authService: AuthService, tokenService: TokenService, cookieService: CookieService,
+              groupService: GroupService, cardService: CardService) {
     this.authService = authService;
     this.tokenService = tokenService;
     this.cookieService = cookieService;
+    this.groupService = groupService;
+    this.cardService = cardService;
    }
 
   async ngOnInit() {
+
     if (this.cookieService.check('token')) {
       this.tokenService.token = this.cookieService.get('token');
       await this.authService.checkTokenValidity().then(data => this.authService.authUser = data);
       this.updateLoginStatus();
+      this.loadUserCardsAndGroups();
     }
-
   }
 
   updateLoginStatus() {
@@ -46,7 +54,13 @@ export class SigninComponent implements OnInit {
       this.tokenService.token = jwt;
       this.tokenService.isLoggedIn = true;
       this.cookieService.set('token', this.tokenService.token, );
-      this.authService.loadGroupsAndUsers().subscribe(data => this.authService.authUser = data);
+      this.loadUserCardsAndGroups();
     });
+  }
+
+  loadUserCardsAndGroups() {
+    this.authService.loadUser().subscribe(data => this.authService.authUser = data);
+    this.cardService.getCards().subscribe(data => this.authService.authUser.cards = data);
+    this.groupService.getGroups().subscribe(data => this.authService.authUser.groups = data);
   }
 }

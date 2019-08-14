@@ -18,12 +18,20 @@
     </ng-template>
   </ngb-tab>
   <ngb-tab *ngFor="let group of authService.authUser.groups">
-    <ng-template ngbTabTitle><b>{{group.name | titlecase}}</b></ng-template>
+    <ng-template ngbTabTitle><div (click)="getGroupCards(group.id)"><b>{{group.name | titlecase}}</b></div></ng-template>
     <ng-template ngbTabContent>
     <app-addusertogroup [group]="group"></app-addusertogroup>
+      <div class="d-flex flex-wrap justify-content-around">
+        <div *ngFor="let card of groupService.groupCards" class="col-md-4 col-lg-2">
+          <span class="badge">{{card.name | titlecase}}</span>
+          <div>
+            <img src="https://api.scryfall.com/cards/named?exact={{card.name}}&format=image&version=small">
+          </div>
+        </div>
+      </div>
     </ng-template>
   </ngb-tab>
-  <ngb-tab id="tab-newGroup" (click)="openVerticallyCentered(content)">
+  <ngb-tab id="tab-newGroup">
     <ng-template ngbTabTitle>
     <div (click)="openVerticallyCentered(content)"><b>New Group+</b></div>
     </ng-template>

@@ -19,15 +19,23 @@ export class CardService {
     this.cardUrl = environment.apiUrl + '/cards';
   }
 
-  getCards(token: string): Observable <Card[]> {
-    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + token).set('Access-Control-Allow-Credentials',  'true');
+  getCards(): Observable <Card[]> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.tokenService.token)
+      .set('Access-Control-Allow-Credentials',  'true');
     return this.http.get<Card[]>(this.cardUrl, {headers});
   }
 
-  postCard(card: Card) {
+  async postCard(card: Card) {
     this.cardToPersist = card;
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.tokenService.token);
-    this.http.post(this.cardUrl, this.cardToPersist, {headers}).subscribe();
+    return await this.http.post<Card[]>(this.cardUrl, this.cardToPersist, {headers}).toPromise();
+
+  }
+
+  getGroupCards(groupId: number): Observable <Card[]> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.tokenService.token)
+      .set('Access-Control-Allow-Credentials',  'true');
+    return this.http.get<Card[]>(this.cardUrl + '/' + groupId, {headers});
 
   }
 

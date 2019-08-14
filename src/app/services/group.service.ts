@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import {TokenService} from './token.service';
 import {Observable} from 'rxjs';
 import {User} from '../models/user';
+import {Card} from '../models/card';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class GroupService {
 
   groupToPersist: FriendGroup;
   groupUrl: string;
+  groupCards: Card[];
 
   constructor(private http: HttpClient, public tokenService: TokenService) {
     this.groupUrl = environment.apiUrl + '/group';
@@ -34,5 +36,7 @@ export class GroupService {
     const params = new HttpParams().set('groupName', group.name).set('userName', user.username);
     return this.http.post(this.groupUrl + '/invite', {}, {headers, params});
   }
+
+
 
 }

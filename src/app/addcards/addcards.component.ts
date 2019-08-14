@@ -8,6 +8,7 @@ import {Catalog} from '../models/catalog';
 import {debounceTime, map} from 'rxjs/operators';
 import {distinctUntilChanged} from 'rxjs/internal/operators/distinctUntilChanged';
 import {Observable} from 'rxjs';
+import {AuthService} from '../services/auth.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ import {Observable} from 'rxjs';
 })
 export class AddcardsComponent implements OnInit {
 
+  authService: AuthService;
   cardService: CardService;
   tokenService: TokenService;
   card: Card;
@@ -24,10 +26,11 @@ export class AddcardsComponent implements OnInit {
   queryField: FormControl = new FormControl();
   autocompleteService: AutocompleteService;
 
-  constructor(cardService: CardService, tokenService: TokenService, autocompleteService: AutocompleteService) {
+  constructor(cardService: CardService, tokenService: TokenService, autocompleteService: AutocompleteService, authService: AuthService) {
     this.cardService = cardService;
     this.tokenService = tokenService;
     this.autocompleteService = autocompleteService;
+    this.authService = authService;
   }
 
   ngOnInit() {
@@ -46,9 +49,10 @@ export class AddcardsComponent implements OnInit {
         : this.results.data.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
 
+
   addCard() {
     this.card = new Card();
     this.card.name = (document.getElementById('addcard') as HTMLInputElement).value;
-    return this.cardService.postCard(this.card);
+    this.cardService.postCard(this.card).then(data => this.authService.authUser.cards = data);
     }
 }

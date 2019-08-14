@@ -40,7 +40,7 @@ export class AuthService {
     return await this.http.get<User>(this.validateUrl, {headers}).toPromise();
   }
 
-  loadGroupsAndUsers(): Observable<User> {
+  loadUser(): Observable<User> {
     const headers = new HttpHeaders().set('Authorization', 'Bearer ' + this.tokenService.token);
     return this.http.get<User>(this.validateUrl, {headers});
   }
